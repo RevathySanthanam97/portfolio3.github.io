@@ -1,56 +1,57 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+ul {
+  list-style-type: none;
 }
 :root {
   --main-color: #ffcc0d;
   --text-color-for-main-bg: #000;
 }
-.rewall_fn_sidebar .navigation .current a{
+.rewall_fn_sidebar .navigation .current a {
   background-color: var(--main-color);
   color: var(--text-color-for-main-bg);
 }
 
-body{
-  font-family: Jost,Arial,Helvetica,sans-serif;
-  font-size: 22px;
-  line-height: 1.37;
+body {
+  font: 400 22px/1.37 "Jost";
   letter-spacing: 0;
-  font-weight: 400;
   color: #000;
-  word-break: break-word;  
+  word-break: break-word;
   position: relative;
   scroll-behavior: smooth;
-
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-.main__container{
+.bold {
+  font-weight: 600;
+}
+.main__container {
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-.main__container > div{
+.main__container > div {
   position: relative;
   transition: 0.5s;
-  width: 100%;
 }
-div.left__container{
-  width: 40%;
+div.left__container {
+  width: 400px;
   height: 100vh;
   text-align: center;
   padding: 10vh 0px;
   position: fixed;
-  display: none;  
   left: 0%;
   z-index: 2;
 }
 
-.left__container ul{
+.left__container ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -59,150 +60,746 @@ div.left__container{
   list-style-type: none;
   margin: 7vh 30px;
 }
-.left__container ul li{
+.left__container ul li {
   scroll-behavior: smooth;
-
+  width: 300px;
+  padding: 10px 0px;
+  transition: all 0.5s ease;
+  background-color: transparent;
+  border: 1px dotted transparent;
 }
-.right__container > div{
-  height: 100vh;
+.left__container ul li.active {
+  background-color: var(--main-color);
+  border: 1px dotted black;
+}
+.right__container {
+  margin-top: 30px;
+  width: calc(100% - 400px);
+  left: 400px;
+}
+.right__container > div {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   scroll-behavior: smooth;
+  position: relative;
+  padding: 100px 0px;
 }
-.arrow__button{
+.right__container > div::after {
+  content: "";
+  bottom: 0px;
+  left: 0px;
+  width: 90%;
+  position: absolute;
+  height: 4px;
+  background-color: #000;
+  right: 0px;
+  margin: 0 auto;
+}
+.sect__arrow {
+  position: absolute;
+  bottom: -13px;
+  right: 0px;
+  content: "";
+  background-color: var(--text-color-for-main-bg);
+  padding: 7px 14px;
+}
+.sect__arrow::after {
+  content: "Double click to scroll the screen to previous section";
+  position: absolute;
+  left: -330px;
+  width: 330px;
+  padding: 20px;
+  background: #fff;
+  z-index: 5;
+  top: 20px;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.sect__arrow:hover::after {
+  opacity: 1;
+}
+.sect__arrow svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+  transform: rotate(90deg);
+}
+.arrow__button {
   display: inline-block;
-  background-color:  var(--text-color-for-main-bg);
+  background-color: var(--text-color-for-main-bg);
   padding: 7px 14px;
   text-align: center;
   position: absolute;
   top: 0px;
   right: 0px;
-  display: none;
 }
 
-.left__container::before{
-  content: none;
+.left__container::before {
+  content: "";
   position: absolute;
   top: 60px;
   right: 20px;
-  background-color:  var(--text-color-for-main-bg);
+  background-color: var(--text-color-for-main-bg);
   width: 4px;
   height: 100%;
 }
-.arrow__button svg{
+.arrow__button svg {
   width: 16px;
   height: 16px;
   fill: #fff;
   transform: scaleX(-1);
 }
-
-.container{
-  width: 100%;
-  padding: 0px 10px;
+.menu__button {
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+.hamburger {
+  position: relative;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  background-color: #ccc;
+  width: 30px;
+  height: 2px;
+}
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  top: 0px;
+  position: absolute;
+  left: 0px;
+}
+.hamburger::before {
+  top: 12px;
+}
+.hamburger::after {
+  top: 24px;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.home__sect{
+h1.title {
+  font: 600 72px/1 "Jost";
+  position: relative;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+}
+
+h1.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+  width: 200px;
+  height: 10px;
+  background-color: black;
+}
+h1.title.center::after {
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+}
+/* about section */
+.home__sect {
   display: flex;
   text-align: left;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  height: auto;
+  justify-content: center;
+  min-height: 100vh;
 }
-
-.abt__Text h1{
-  font-weight: 600;
-  font-size: 50px;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
+.abt__Text {
+  margin-left: 50px;
+  max-width: 450px;
+}
+.abt__Text > * {
+  max-width: 450px;
+}
+.abt__ImgSect {
+  max-width: 500px;
   position: relative;
+  width: 50%;
 }
-.abt__Text p{
-}
-h1::after{
-  position: absolute;
-  content: '';
-  left: 0px;
-  bottom: 0px;
-  width: 150px;
-  height: 6px;
-  background-color: var(--text-color-for-main-bg);
-}
-.abt__ImgSect{
-  width: 100%;
-  position: relative;
-}
-.abt__Img{
+.abt__Img {
   width: 100%;
   height: auto;
   width: calc(100% - 40px);
-  padding: 30px;
+  padding: 15px;
   border: 10px solid black;
   margin: 20px;
 }
-.badge{
+.badge {
   position: absolute;
   width: 100%;
-  height: 80%;
-  background-color:  var(--main-color);
+  background-color: var(--main-color);
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  z-index: -1;
+  margin: 80px 0px;
+}
+/* about section */
+
+/* biography */
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 80px auto 0px;
+}
+.details > p {
+  border: 4px solid #444;
+  background-color: #f2f2f2;
+  padding: 7px 20px;
+  text-align: center;
+  margin: 15px;
+  font-size: 30px;
+}
+.download__Button {
+  font: 18px/1 "Jost";
+  width: 340px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--main-color);
+  color: var(--text-color-for-main-bg);
+  margin: 300px auto;
+  position: relative;
+}
+.download__icon {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+}
+.download__icon svg {
+  width: 58px;
+  height: auto;
+}
+.download__icon svg.arrow {
+  position: absolute;
   top: 0px;
   left: 0px;
-  margin: 15% 0px;
-  z-index: -1;
+  right: 0px;
+  margin: auto;
+  transition: 0.5s;
 }
+.line__anime {
+  width: 2px;
+  height: 100px;
+  background-color: var(--text-color-for-main-bg);
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: -150px;
+  transition: 0.25s ease;
+  display: block;
+  opacity: 1;
+}
+.line__anime.colored {
+  top: -200px;
+  opacity: 0;
+}
+.line__anime.colored,
+.line__anime.colored::after,
+.line__anime.colored::before {
+  background-color: var(--main-color);
+}
+.line__anime::after,
+.line__anime::before {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  width: 2px;
+  height: 60px;
+  background-color: var(--text-color-for-main-bg);
+}
+.line__anime::after {
+  left: 12px;
+}
+.line__anime::before {
+  right: 12px;
+}
+.line__anime_btm {
+  bottom: -150px;
+  top: unset;
+}
+.line__anime_btm.colored {
+  bottom: -200px;
+  top: unset;
+}
+.line__anime_btm::after,
+.line__anime_btm::before {
+  bottom: unset;
+  top: 0px;
+}
+
+.download__Button:hover .line__anime_top.colored {
+  top: -150px;
+  opacity: 1;
+}
+.download__Button:hover .line__anime_btm.colored {
+  bottom: -150px;
+  opacity: 1;
+}
+.download__Button:hover .line__anime_top {
+  top: -200px;
+  opacity: 0;
+}
+.download__Button:hover .line__anime_btm {
+  bottom: -200px;
+  opacity: 0;
+}
+.download__Button:hover .download__icon svg.arrow {
+  top: -10px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.tabs li {
+  font: 600 24px/30px "Jost";
+  text-transform: uppercase;
+  flex: 1 1 auto;
+  z-index: 3;
+  padding: 0px 5px;
+  margin: 10px 0px;
+}
+.tabs li:not(:last-child) {
+  border-right: 2px solid var(--text-color-for-main-bg);
+}
+.tabs li p {
+  padding-bottom: 4px;
+  position: relative;
+  display: inline-block;
+}
+
+.tabs li p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  border-bottom: 4px solid transparent;
+  transition: 0.5s ease;
+}
+.tabs li.active p::after {
+  border-bottom: 4px solid var(--main-color);
+}
+.tabs__content {
+  width: 80%;
+  margin: 50px auto;
+}
+.tabs__content > li {
+  height: 0px;
+}
+.tabs__content > li.active {
+  height: auto;
+}
+.tabs__content .experience,
+.tabs__content .education,
+.tabs__content .skill {
+  opacity: 0;
+  transform: rotateY(20deg) rotateZ(-3deg);
+  transition: 0s ease;
+}
+.tab__content.active .experience,
+.tab__content.active .education,
+.tab__content.active .skill {
+  opacity: 1;
+  transform: rotateY(0) rotateZ(0);
+  transition: 1s ease;
+}
+.experience li,
+.education li {
+  text-align: left;
+  background-color: #f2f2f2;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+.tabs__content .orgn__name {
+  font-size: 18px;
+}
+.tabs__content .orgn__designation {
+  font: 600 30px/1 "Jost";
+  margin: 10px 0px 20px;
+}
+.skill li {
+  margin-bottom: 20px;
+  border: 4px solid #000;
+  padding: 10px;
+}
+.skill li p {
+  background: var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  font: 600 22px/52px "Jost";
+  width: 200px;
+  text-align: left;
+  transition: 1.2s ease;
+  overflow: visible;
+  align-items: center;
+}
+.skill li p span:not(.bold) {
+  flex: 1;
+}
+.skill li p span.bold {
+  text-align: right;
+}
+.tab__content.active .skill li:nth-child(1) p {
+  width: 92%;
+}
+.tab__content.active .skill li:nth-child(2) p {
+  width: 95%;
+}
+.tab__content.active .skill li:nth-child(3) p {
+  width: 80%;
+}
+.tab__content.active .skill li:nth-child(4) p {
+  width: 85%;
+}
+.skill_cont {
+  margin-top: 60px;
+}
+/* biography */
+/* portfolio section  */
+.contact__button {
+  margin-top: 50px;
+  padding: 20px 0px;
+  width: 80%;
+  text-align: center;
+  color: var(--text-color-for-main-bg);
+  background-color: var(--main-color);
+  transition: 0.5s ease;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  font: 600 18px/26px "Jost";
+}
+.contact__button:hover {
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  background-color: transparent;
+}
+.projects {
+  margin-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  justify-content: space-between;
+}
+.project__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 30px 20px;
+}
+.project__detail:nth-child(even) {
+  flex-direction: column-reverse;
+}
+.project_title {
+  font: 600 30px/1.2 "Jost";
+  border-bottom: 2px solid var(--main-color);
+}
+.project_subtitle {
+  margin: 10px auto 30px auto;
+  font: 18px/1.37 "Jost";
+}
+.project__illus {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.project__illus img {
+  width: 100%;
+  min-height: 400px;
+  height: auto;
+  opacity: 0;
+}
+.project__img {
+  top: 0px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(./images/1.jpg);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: scale(1.5);
+  background-size: cover;
+  transition: all 1s ease;
+}
+.project__img:hover {
+  transform: scale(1);
+}
+/* portfolio section  */
+
+/* services section  */
+.services__lists {
+  text-align: left;
+  margin: 100px 0px 50px 0px;
+}
+.services__lists li {
+  margin: 100px 0px;
+  display: flex;
+  justify-content: flex-start;
+}
+.services__lists li:nth-child(even) {
+  justify-content: flex-end;
+}
+.services__lists .service__content {
+  background-color: #f2f2f2;
+  padding: 50px;
+  width: 85%;
+  text-align: left;
+  position: relative;
+}
+.services__lists .service__content::after {
+  position: absolute;
+  content: "";
+  margin: 0px auto;
+  width: 80%;
+  height: 4px;
+  background-color: var(--text-color-for-main-bg);
+  bottom: 0px;
+  box-sizing: border-box;
+  left: 0px;
+  right: 0px;
+  /* transform: scaleX(0); */
+  transform: scaleX(1);
+  transform-origin: center;
+  transition: 0.5s ease;
+}
+/* .services__lists li:hover::after {
+  transform: scaleX(1);
+} */
+.services_name {
+  margin-bottom: 20px;
+  font: 600 30px/1.2 "Jost";
+}
+.services__lists li .corner__container {
+  position: absolute;
+  right: 0px;
+  top: -50px;
+  padding: 20px;
+  background-color: var(--main-color);
+}
+/* services section  */
+
+/* customer section  */
+.customer__lists {
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.customer__lists li {
+  max-width: 200px;
+  width: 200px;
+  padding: 20px;
+}
+/* customer section  */
+
+/* contacts section  */
+.contacts h3 {
+  font: 600 30px/1.2 "Jost";
+}
+.contact__mob:hover h3 {
+  color: var(--main-color);
+  transition: 0.5s ease;
+}
+.contact__mail h3 a {
+  position: relative;
+}
+.contact__mail h3 a::after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.5s ease;
+  transition: all 0.5s ease;
+}
+.contact__mail h3 a:hover::after {
+  width: 0%;
+  right: 0px;
+  left: auto;
+}
+#contacts .title {
+  margin-bottom: 50px;
+}
+#contacts div {
+  margin: 80px 0px;
+}
+/* contacts section  */
+
 /* menuHide */
-.main__container.hide__menu > div{
+.main__container.hide__menu > div {
   float: auto;
 }
-.main__container.hide__menu .left__container{
-  left: -37%;
+.main__container.hide__menu .left__container {
+  left: -356px;
 }
-.main__container.hide__menu .left__container::before{
+.main__container.hide__menu .left__container::before {
   content: none;
 }
-.main__container.hide__menu .right__container{
+.main__container.hide__menu .right__container {
   width: 100%;
   left: 0%;
 }
-.main__container.hide__menu .arrow__button svg{
+.main__container.hide__menu .arrow__button svg {
   transform: scaleX(1);
 }
-
 /* responsive */
-@media (min-width: 768px) {
-  
-}
-@media (min-width: 1040px) {
-  
-}
 
-@media (min-width: 1100px) {
-  .main__container{
+@media (max-width: 1100px) {
+  .main__container {
     flex-direction: row;
   }
-  .arrow__button{
-    display: block;
+  .container {
+    width: 90%;
   }
-  div.right__container{
-    left: 40%;
-    width: 60%;
+  div.left__container {
+    width: 100vw;
+    height: 60px;
+    padding: 0px;
+    z-index: 5;
   }
-  div.left__container{
-    display: block;
+  div.right__container {
+    left: 0px;
+    width: 100vw;
   }
-  .left__container::before{
-    content: '';
+  .arrow__button {
+    display: none;
   }
-  .home__sect{
+  .left__container::before {
+    content: none;
+  }
+  .header {
+    display: flex;
+    background: red;
+    display: flex;
     flex-direction: row;
-    height: 100vh;
+    padding: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
   }
-  .abt__ImgSect{
-    width: 40%;
-  } 
-  .abt__Text{
-    width: 60%;
+  .menu__button {
+    display: block;
+  }
+  .nav__links {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    left: 0px;
+    text-align: left;
+    background: black;
+    transition: 5s ease;
+    top: 60px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in;
+  }
+  .nav__links.active {
+    max-height: 320px;
+  }
+  .left__container ul {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .left__container ul li {
+    color: #fff;
+    text-align: left;
+    padding: 5px 0px;
+  }
+  .main__container.hide__menu .left__container {
+    left: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+  .m-flex-col {
+    flex-direction: column;
+  }
+  .m-w-100 {
+    width: 100%;
+    max-width: 100%;
+  }
+  .abt__Text {
+    margin: 50px 0px 0px;
+  }
+  .details > p {
+    width: 90%;
+  }
+  .tabs__content {
+    width: 100%;
+  }
+  .project__detail {
+    width: 100%;
+  }
+  .project__detail:nth-child(even) {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 560px) {
+  h1.title {
+    font-size: 45px !important;
+  }
+  p {
+    font-size: 18px !important;
+  }
+  .details {
+    width: 100%;
+  }
+  .details > p {
+    width: 100%;
+    margin: 15px 0px;
+  }
+  .download__Button {
+    width: 100%;
+  }
+  .experience li,
+  .education li {
+    padding: 20px 10px;
+  }
+  .skill li {
+    padding: 5px;
+  }
+  .skill li p {
+    font: 600 10px/1.5 "Jost";
+    padding: 5px 10px;
+  }
+  .skill li p span {
+    min-width: 70px;
+  }
+  .contact__button {
+    width: 100%;
+    padding: 20px;
   }
 }
